@@ -1,7 +1,8 @@
 ---
 title:        "BBD스타일을 위한 MockitoBBD"
 description:  "Aliases기능을 활용한 BBD스타일의 TestCode 작성법"
-author:       "mskwon"
+author:       "mskwon25"
+tags:         "TDD"
 ---
 
 BBD스타일을 위한 MockitoBBD
