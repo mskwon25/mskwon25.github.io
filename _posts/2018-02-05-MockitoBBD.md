@@ -1,22 +1,20 @@
 ---
 title:        "BBD스타일을 위한 MockitoBBD"
-description:  "Aliases기능을 활용한 BBD스타일의 TestCode 작성법"
-author:       "mskwon25"
-tags:         "TDD"
+categories:
+              - "TDD"
+tags:         
+              - "JUnit"
 ---
 
-BBD스타일을 위한 MockitoBBD
-==========================
+### BBD(Behavior-driven development)란 무엇인가?
 
-BBD(Behavior-driven development)란 무엇인가?
--------------------------------------------
 >In software engineering, behavior-driven development BDD is a software development process that emerged from test-driven development TDD. Behavior-driven development combines the general techniques and principles of TDD with ideas from domain-driven design and object-oriented analysis and design to provide software development and management teams with shared tools and a shared process to collaborate on software development.
 >
 
 Wiki를 요약해보면 결국 BDD에 대한 정의는 TDD와 큰 차이는 없다. 그래서 BDD에 대한 글을 찾아 보다가 `Dan North`의 `INTRODUCING BDD` 라는 유명한 글을 읽게 되었다. 이 글에 따르면 BDD의 가장 큰 특징은 비즈니스 요구사항에 집중하여 TestCase를 만드는 것이다. 이러한 틍징에 따라서 BDD는 TDD에 비해 보다 자연어에 가까운 테스트 구조가 가능하도록 다양한 기능을 지원한다. 그 중 이번에 소개할 기능은 바로 `Aliases for behavior driven development`이다
 
-Aliases for behavior driven development 사용해보기
--------------------------------------------------
+### Aliases for behavior driven development 사용해보기
+
 `Behavior Driven Development` 스타일의 테스트 작성방법은 테스트 method에 기본으로 `//given` `//when` `//then` 이라고 주석을 달아두는 것이다.
 
 문제는 when을 이용한 stubbing이 `//given` `//when` `//then` 주석에 잘 맞아떨어지지 않는다는 것이다. 왜냐하면 stubbing이 when이 아닌 given에 속하기 때문이다.
