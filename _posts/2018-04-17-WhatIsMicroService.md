@@ -1,5 +1,13 @@
-## MicroService란 무엇인가?
-
+---
+title:        "MicroService란 무엇인가?"
+categories:
+              - "MSA"
+tags:         
+              - "Spring"
+              - "MSA"
+              - "Architecture"
+              - "MicroService"
+---
 ### MicroService Architecture 등장 배경
 * 비즈니스적 요구
   * `항공사의 예약 시스템`
