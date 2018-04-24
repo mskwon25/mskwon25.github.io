@@ -141,3 +141,6 @@ class Receiver {
 1. MSA를 도입하게 되면 필연적으로 보안과 관련한 이슈를 처리해야한다. 서로 통신하는 MicroService가 많을 수록 중요성은 더 커진다. 중요한 점은 각 모듈별로 보안과 관련한 이슈들을 handling하기에는 오버헤드가 커진다는 단점이 발생한다. Spring Security에는 이러한 점을 보완하기 위한 다양한 기술을 제공한다.
 2. 일반적으로 하나의 도메인에서 다른 도메인에 데이터 요청하는 것은 보안상의 이유로 금지되어 있지만 MSA는 모듈간의 통신으로 구성되기 때문에 이러한 제약사항을 맞이할 수 밖에 없다. 이 때는 CORS(Cross-origin Resource Sharing)를 적절히 이용하여 구현한다.
 3. 설마 수 많은 API문서를 직접 정리하고 있는건 아니겠지? 이럴 땐 Swagger를 이용해보자
+
+### Reference
+[스프링5.0 마이크로서비스 2/E(에이콘 출판사)](http://acornpub.co.kr/book/spring5-microservices-2e)

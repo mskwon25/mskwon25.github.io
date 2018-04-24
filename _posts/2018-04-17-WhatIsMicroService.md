@@ -75,4 +75,4 @@ MSA는 현재 IT시장에서 아주 Hot한 친구입니다. 모든 애플리케�
 ### Reference
 이미지 출처링크 : https://www.packtpub.com/sites/default/files/downloads/Spring5.0MicroservicesSecondEdition_ColorImages.pdf
 
-내용 출처 : 스프링5.0 마이크로서비스 2/E(에이콘 출판사)
+내용 출처 : [스프링5.0 마이크로서비스 2/E(에이콘 출판사)](http://acornpub.co.kr/book/spring5-microservices-2e)
