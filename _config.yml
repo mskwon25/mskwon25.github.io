@@ -114,7 +114,7 @@ author:
   gitlab           :
   google_plus      :
   keybase          :
-  instagram        : "min_seok23"
+  instagram        :
   lastfm           :
   linkedin         : "minseok-kwon-32a041109" # "john-doe-12345678" (the last part of your profile url, e.g. https://www.linkedin.com/in/john-doe-12345678)
   pinterest        :
@@ -266,3 +266,4 @@ defaults:
       comments: true # true
       share: true
       related: true
+      toc: true
