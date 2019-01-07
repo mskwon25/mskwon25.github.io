@@ -12,8 +12,6 @@ tags:
 
 ---
 
- ㅓ
-
 요즘에는 개발하시는 많은 분들이 ORM을 사용한다. 나 역시 최근 JPA에 대해 조금씩 공부하고 있는데, 아직은 모르는게 많아 문제 하나를 해결하는데 많은 시간을 할애하고 있다. 정말.. 배움cd 의 끝은 없는것인가...
 
 ### 문제의 발견
@@ -31,11 +29,11 @@ public interface PersonRepository extends JpaRepository<Person, Serializable> {
 
 ```
 
-게다가 `Query`Annotation을 사용하면 내가 원하는 값을 특정 model로 한 번에 Mapping 할 수 있다. 
+게다가 `Query`Annotation을 사용하면 내가 원하는 값을 특정 model로 한 번에 Mapping 할 수 있다.
 
-근데 만들고 보니 `CountByAddress` 부분에 자꾸 빨간불이 들어오네? 읽어보니 결국 `Class`가 아니라 `Interface`로 구현하라는데 
+근데 만들고 보니 `CountByAddress` 부분에 자꾸 빨간불이 들어오네? 읽어보니 결국 `Class`가 아니라 `Interface`로 구현하라는데
 
-![what](/Users/jarvis/mskwon25.github.io/assets/images/what.png)
+![what](/Users/jarvis/mskwon25.github.io/assets/images/jpa-projections/what.jpg)
 
 일단 Interface로 만들라고 하니 아래와 같이 만들긴한다.
 
@@ -113,7 +111,7 @@ public interface CountByAddress {
 
 임시로 getter를 만들어주고 잘 가져 오는지 Test를 해보자!
 
-![스크린샷 2019-01-07 오후 11.24.43](/Users/jarvis/mskwon25.github.io/assets/images/스크린샷 2019-01-07 오후 11.24.43.png)
+![스크린샷 2019-01-07 오후 11.24.43](/Users/jarvis/mskwon25.github.io/assets/images/jpa-projections/first-test.jpg)
 
 **엥? 이게 된다고???? 뭐야 구현체가 없는데 값을 어디서 가져오는거냐? 어떻게 이게 돼?**
 
@@ -125,7 +123,7 @@ public interface CountByAddress {
 public interface PersonRepository extends JpaRepository<Person, Serializable> {
     @Query("SELECT COUNT(p.id) AS count, p.address AS address FROM Person p GROUP BY p.address")
     List<CountByAddress> getAddressAndPersonCount();
-    
+
     Collection<NameAgeOnly> findByAgeGreaterThan(int age);
 }
 ```
@@ -143,15 +141,15 @@ public void annotationTest() {
 }
 ```
 
-![스크린샷 2019-01-07 오후 11.30.14](/Users/jarvis/mskwon25.github.io/assets/images/스크린샷 2019-01-07 오후 11.30.14.png)
+![스크린샷 2019-01-07 오후 11.30.14](/Users/jarvis/mskwon25.github.io/assets/images/jpa-projections/second-test.jpg)
 
 는 또 성공!
 
-허허.. `Getter` 껍데기만 있는데 대체 이게 뭔일 이래? 
+허허.. `Getter` 껍데기만 있는데 대체 이게 뭔일 이래?
 
 ### Debugger 출동
 
-![스크린샷 2019-01-07 오후 11.36.23](/Users/jarvis/mskwon25.github.io/assets/images/스크린샷 2019-01-07 오후 11.36.23.png)
+![스크린샷 2019-01-07 오후 11.36.23](/Users/jarvis/mskwon25.github.io/assets/images/jpa-projections/debug.jpg)
 
 자세히 보면 Proxy를 이용해 해당 data를 mapping해주는걸로 보이는데 이게 어떻게 가능한 걸까?
 
@@ -166,10 +164,11 @@ Spring JPA Document에 있는 Projections 부분을 보면 위와 같이 설명�
 > The query execution engine creates proxy instances of that interface at runtime for each element returned and forwards calls to the exposed methods to the target object.
 
 JPA의 핵심인 query excution engine은 런타임시에 proxy instance를 생성해 target obeject로 향한 call에 대해 각각의 element를 리턴해준다!
+결국 이 기능을 통해 Jpa의 Projections이라는 기능이 구현될 수 있었다.
 
 ### 오늘의 교훈
 
-잘 모르는 부분 찾느라 시간은 많이 걸렸지만 덕분에 오늘도 새로운거 하나 배워간다.. (글 좀 자주쓰자!!!)
+잘 모르는 부분 찾느라 시간은 많이 걸렸지만 덕분에 JPA의 새로운 기능을 하다 더 배워간다..
 
 ### Reference
 
