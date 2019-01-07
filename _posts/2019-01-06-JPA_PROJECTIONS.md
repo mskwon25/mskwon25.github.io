@@ -33,7 +33,7 @@ public interface PersonRepository extends JpaRepository<Person, Serializable> {
 
 근데 만들고 보니 `CountByAddress` 부분에 자꾸 빨간불이 들어오네? 읽어보니 결국 `Class`가 아니라 `Interface`로 구현하라는데
 
-![what](/Users/jarvis/mskwon25.github.io/assets/images/jpa-projections/what.jpg)
+![what](/assets/images/jpa-projections/what.jpg)
 
 일단 Interface로 만들라고 하니 아래와 같이 만들긴한다.
 
@@ -111,7 +111,7 @@ public interface CountByAddress {
 
 임시로 getter를 만들어주고 잘 가져 오는지 Test를 해보자!
 
-![스크린샷 2019-01-07 오후 11.24.43](/Users/jarvis/mskwon25.github.io/assets/images/jpa-projections/first-test.jpg)
+![first-test](/assets/images/jpa-projections/first-test.jpg)
 
 **엥? 이게 된다고???? 뭐야 구현체가 없는데 값을 어디서 가져오는거냐? 어떻게 이게 돼?**
 
@@ -141,7 +141,7 @@ public void annotationTest() {
 }
 ```
 
-![스크린샷 2019-01-07 오후 11.30.14](/Users/jarvis/mskwon25.github.io/assets/images/jpa-projections/second-test.jpg)
+![second-test](/assets/images/jpa-projections/second-test.jpg)
 
 는 또 성공!
 
@@ -149,7 +149,7 @@ public void annotationTest() {
 
 ### Debugger 출동
 
-![스크린샷 2019-01-07 오후 11.36.23](/Users/jarvis/mskwon25.github.io/assets/images/jpa-projections/debug.jpg)
+![debug](/assets/images/jpa-projections/debug.jpg)
 
 자세히 보면 Proxy를 이용해 해당 data를 mapping해주는걸로 보이는데 이게 어떻게 가능한 걸까?
 
